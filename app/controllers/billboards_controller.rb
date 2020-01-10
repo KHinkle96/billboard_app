@@ -1,0 +1,2 @@
+class BillboardsController < ApplicationController
+end

@@ -1,6 +1,11 @@
 class BillboardsController < ApplicationController
+    before_action :set_billboard, only: [:show, :destroy]
+
     def index
         @billboards = Billboard.all
+    end
+
+    def show
     end
 
     def new
@@ -10,7 +15,7 @@ class BillboardsController < ApplicationController
     def create
         @billboard = Billboard.new(billboard_params)
         if @billboard.save
-          redirect_to(billboards_path)
+          redirect_to @billboard
         else
           render(:new)
         end
@@ -37,7 +42,11 @@ class BillboardsController < ApplicationController
 
       private
 
+      def set_billboard
+        @billboard = Billboard.find(params[:id])
+      end
+
       def billboard_params
-        params.require(:billboard).permit(:body)
+        params.require(:billboard).permit(:title :country)
       end
     end

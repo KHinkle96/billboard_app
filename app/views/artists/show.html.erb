@@ -1,0 +1,23 @@
+<h1><%= @artist.name %></h1>
+<hr />
+<h2>Songs</h2>
+<ul>
+  <% @artist.songs.each do |song| %>
+    <li>
+      <%= link_to song.title, song %>
+    </li>
+    <li>
+    <%= link_to song.released_on, song %>
+    </li>
+    <li>
+    <%= link_to song.genre, song %>
+    </li>
+    <li>
+    <%= link_to song.rating, song %>
+    </li>
+  <% end %>
+</ul>
+<br />
+<br />
+<br />
+<%= link_to 'Delete Artist', @artist, method: :delete, class: "ui red button inverted" %>

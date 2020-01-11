@@ -6,6 +6,7 @@ class BillboardsController < ApplicationController
   end
 
   def new
+    @artists = Artist.all - @song.artists
     @billboard = @song.billboards.new
   end
 

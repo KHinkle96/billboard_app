@@ -1,36 +1,48 @@
 class BillboardsController < ApplicationController
-  before_action :set_song
-
+  
   def index
-    @billboards = Billboard.All
+    @billboards = Billboard.all
   end
-
+  
+  def show
+  end
+  
   def new
-    @artists = Artist.all - @song.artists
-    @billboard = @song.billboards.new
+   @billboard = Billboard.new    
   end
-
+  
   def create
-    @billboard = @song.billboards.new(billboard_params)
+    @billboard = Billboard.new(billboard_params)
     if @billboard.save
-      redirect_to song_billboards_path(@song)
+      redirect_to(billboards_path)
     else
-      render :new
+      render(:new)
     end
   end
-
-  def destroy
-    @billboard = @song.billboards.find(params[:id])
-    @billboard.destroy
-    redirect_to song_billboards_path(@song)
+  
+  def edit
+    @billboard = Billboard.find(params[:id]) 
   end
 
- private
-   def set_song
-     @song = Song.find(params[:song_id]) 
-   end
+  def update 
+    @billboard = Billboard.find(params[:id])
+    if @billboard.update(billboard_params)
+      redirect_to(billboards_path)
+    else 
+      render(:edit)
+    end
+  end
+  
+  def destroy
+    @billboard = Billboard.find(params[:id])
+    @billboard.destroy
+    redirect_to(billboards_path)
+  end
+  
+  private
 
-   def billboard_params
-     params.require(:billboard).permit(:title, :country)
-   end
+  def billboard_params
+  params.require(:billboard).permit(:title, :country)
+  end
+
 end

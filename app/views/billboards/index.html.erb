@@ -1,0 +1,9 @@
+<h1><%= @song.full_song %>: Billboards</h1>
+    <p>
+        <%= billboard.title %>
+        -
+        <%= billboard.country %>
+        -
+        <%= link_to 'Add Billboard', new_song_billboard_path(@song) %>
+    <p>
+ <% end %>

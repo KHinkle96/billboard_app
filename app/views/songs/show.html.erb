@@ -1,0 +1,8 @@
+<h1><%= @song.full_song %></h1>
+<hr />
+<br />
+<%= link_to 'Billboards', song_billboards_path(@song), class: "ui primary button inverted" %>
+<br />
+<br />
+<br />
+<%= link_to "Delete Song", @song, method: :delete, class: "ui red button inverted" %>

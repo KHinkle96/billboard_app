@@ -1,52 +1,35 @@
 class BillboardsController < ApplicationController
-    before_action :set_billboard, only: [:show, :destroy]
+  before_action :set_song
 
-    def index
-        @billboards = Billboard.all
+  def index
+    @billboards = Billboard.All
+  end
+
+  def new
+    @billboard = @song.billboards.new
+  end
+
+  def create
+    @billboard = @song.billboards.new(billboard_params)
+    if @billboard.save
+      redirect_to song_billboards_path(@song)
+    else
+      render :new
     end
+  end
 
-    def show
-    end
+  def destroy
+    @billboard = @song.billboards.find(params[:id])
+    @billboard.destroy
+    redirect_to song_billboards_path(@song)
+  end
 
-    def new
-        @billboard = Billboard.new
-    end
+ private
+   def set_song
+     @song = Song.find(params[:song_id]) 
+   end
 
-    def create
-        @billboard = Billboard.new(billboard_params)
-        if @billboard.save
-          redirect_to @billboard
-        else
-          render(:new)
-        end
-      end
-
-      def edit
-        @billboard = Billboard.find(params[:id])
-      end
-
-      def update
-        @billboard = Billboard.find(params[:id])
-        if @billboard.update(billboard_params)
-            redirect_to(billboards_path)
-        else
-            render(:edit)
-        end
-      end
-
-      def destroy
-        @billboard = Billboard.find(params[:id])
-        @billboard.destroy
-        redirect_to(billboards_path)
-      end
-
-      private
-
-      def set_billboard
-        @billboard = Billboard.find(params[:id])
-      end
-
-      def billboard_params
-        params.require(:billboard).permit(:title :country)
-      end
-    end
+   def billboard_params
+     params.require(:billboard).permit(:title, :country)
+   end
+end

@@ -1,10 +1,11 @@
-<h1>Artists</h1>
-<%= link_to 'Add Artist', new_artist_path %>
-<hr />
-<ul>
-  <% @artists.each do |artist| %>
-    <li>
-      <%= link_to artist.name, artist %>
-    </li>
+<h1>All Artists</h1>
+
+<% @artists.each do |artist| %>
+  <p>
+    <%= artist.name %>
+    -
+    <%= link_to("edit", edit_artist_path(artist.id)) %>
+    -
+    <%= link_to("delete", artist_path(artist.id), method: :delete, data: {confirm: "Are you sure?"})%>
+  </p>
 <% end %>
-</ul>

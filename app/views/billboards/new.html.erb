@@ -1,10 +1,4 @@
-<h1>Add Billboard</h1>
-<%= form_with(model: [@song, @Billboard], local: true, class: "ui form" ) do |f| %>
-  <%= f.label :artist %>
-  <%= f.select :artist_id, @artists.collect { |u| [u.name, u.id] } %>
-  <br />
-  <%= f.label :song %>
-  <%= f.select :song_id, @songs.collect { |u| [u.title, u.released_on, u.genre, u.rating, u.id] } %>
-  <br />
-  <%= f.submit nil, class: "ui green button inverted" %>
+<%= form_for(@billboard) do |f| %>
+  <%= render("billboards_form", f: f)%>
+  <%= f.submit("update") %>
 <% end %>

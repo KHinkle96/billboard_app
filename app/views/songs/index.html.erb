@@ -1,11 +1,14 @@
 <h1>Songs</h1>
-<%= link_to 'Add Song', new_song_path %>
-<hr />
-<h2><%= @songs.length <= 0 ? "No Songs" : "" %></h2> 
-<ul>
-  <% @songs.each do |song| %>
-    <li>
-      <%= link_to song.full_song, song %>
-    </li>
-  <% end %>
-</ul>
+
+<% @songs.each do |song| %>
+  <p>
+     <%= song.title %>
+     <%= song.genre %>
+     <%= song.released_on%>
+     <%= song.rating %>
+    -
+    <%= link_to("edit", edit_song_path(song.id)) %>
+    -
+    <%= link_to("delete", song_path(song.id), method: :delete, data: {confirm: "Are you sure??"})%>
+  </p>
+<% end %>

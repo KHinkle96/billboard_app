@@ -1,20 +1,5 @@
-<h1>Add Song</h1>
-<%= form_with(model: @song, local: true, class: "ui form" ) do |f| %>
-    <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title, required: true, autofocus: true, placeholder: "Title" %>
-  </div>
-  <div class="field">
-    <%= f.label :released_on %>
-    <%= f.text_field :released_on, required: true, placeholder: "Released On" %>
-  </div>
-  <div class="field">
-  <%= f.label :genre %>
-  <%= f.text_field :genre, required: true, autofocus: true, placeholder: "Genre" %>
-</div>
-<div class="field">
-  <%= f.label :rating %>
-  <%= f.text_field :rating, required: true, placeholder: "Rating" %>
-</div>
-  <%= f.submit nil, class: "ui blue button inverted" %>
+<%= form_for(@song) do |f| %>
+  <%= f.text_field(:title) %>
+  <%= f.select(:artist_id, options_from_collection_for_select(Artist.all, "id", "name", @song.artist_id)) %>
+  <%= f.submit("save") %>
 <% end %>

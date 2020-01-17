@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :set_view_count_cookie
+    before_action :authenticate_user!
 
     private
 

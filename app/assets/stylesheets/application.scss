@@ -14,3 +14,11 @@
  *= require_self
  */
  @import "semantic-ui";
+
+ .flash-notice {
+    color: green;
+}
+
+.flash-alert {
+    color: red;
+}

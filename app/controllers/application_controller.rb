@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 
     rescue_from CanCan::AccessDenied do |exception|
         flash[:warning] = exception.message 
+        flash[:alert] = "ERROR: You can't access this, you're not an admin."
         redirect_to root_path
     end
 end

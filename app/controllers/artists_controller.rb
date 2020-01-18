@@ -14,12 +14,12 @@ class ArtistsController < ApplicationController
 
   def create
     @artist = Artist.new(artist_params)
+    authorize! :create, @artist
     if @artist.save
       redirect_to(artists_path)
     else
       render(:new)
     end
-    authorize! :create, @artist
   end
 
   def edit

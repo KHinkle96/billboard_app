@@ -3,9 +3,13 @@
 <% @artists.each do |artist| %>
   <p>
     <%= artist.name %>
-    -
-    <%= link_to("edit", edit_artist_path(artist.id)) %>
-    -
-    <%= link_to("delete", artist_path(artist.id), method: :delete, data: {confirm: "Are you sure?"})%>
+    <br>
+    <% if can? :edit, Artist %>
+    <%= link_to("Edit", edit_artist_path(artist.id)) %>
+    <% end %>
+    <br>
+    <% if can? :delete, Artist %>
+    <%= link_to("Delete", artist_path(artist.id), method: :delete, data: {confirm: "Are you sure?"})%>
+    <% end %>
   </p>
 <% end %>

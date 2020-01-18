@@ -4,14 +4,10 @@
   <%= link_to 'Home', root_path %>
     </li>
     <li>
-    <% if can? :index, Artist %>
-    <%= link_to 'Artist', artists_path, class: 'btn btn-lg btn-primary' %>
-    <% end %>
+      <%= link_to 'Artists', artists_path %>
     </li>
     <li>
-    <% if can? :index, Artist %>
-    <%= link_to 'Add Artist', new_artist_path, class: 'btn btn-lg btn-primary' %>
-    <% end %>
+      <%= link_to 'Add Artist', new_artist_path %>
     </li>
     <li>
       <%= link_to 'Billboards', billboards_path %>

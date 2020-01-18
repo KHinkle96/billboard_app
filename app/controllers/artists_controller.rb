@@ -2,7 +2,6 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
-    authorize! :index, @artist
   end
 
   def show
@@ -10,6 +9,7 @@ class ArtistsController < ApplicationController
 
   def new
    @artist = Artist.new
+   authorize! :new, @artist
   end
 
   def create
@@ -19,11 +19,14 @@ class ArtistsController < ApplicationController
     else
       render(:new)
     end
+    authorize! :create, @artist
   end
 
   def edit
     @artist = Artist.find(params[:id])
+    authorize! :edit, @artist
   end
+
 
   def update
     @artist = Artist.find(params[:id])
@@ -32,10 +35,12 @@ class ArtistsController < ApplicationController
     else
       render(:edit)
     end
+    authorize! :update, @artist
   end
 
   def destroy
     @artist = Artist.find(params[:id])
+    authorize! :destroy, @artist
     @artist.destroy
     redirect_to(artists_path)
   end

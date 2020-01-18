@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
            cookies[:views] = 0 
         end
     end
+
+    rescue_from CanCan::AccessDenied do |exception|
+        flash[:warning] = exception.message 
+        redirect_to root_path
+    end
 end

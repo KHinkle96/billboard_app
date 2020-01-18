@@ -60,3 +60,5 @@ gem 'faker'
 gem 'devise'
 
 gem 'rails_admin'
+
+gem 'cancancan'

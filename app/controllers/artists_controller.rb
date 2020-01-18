@@ -2,6 +2,7 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
+    authorize! :index, @artist
   end
 
   def show

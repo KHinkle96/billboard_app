@@ -15,6 +15,15 @@
  */
  @import "semantic-ui";
 
+ .navbar-link {
+    color: black;
+    width: 10px;
+    padding: 5px;
+    margin: 5px;
+    border: 0px;
+    background-color: lightblue;
+ }
+
  .flash-notice {
     color: green;
 }
@@ -22,3 +31,41 @@
 .flash-alert {
     color: red;
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: white;
+  }
+
+  body {
+      color: black;
+      background-image: url('music.png');
+      background-repeat: repeat;
+  }
+
+  div {
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    border: 0px;
+    background-color: lightblue;
+  }

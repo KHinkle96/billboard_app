@@ -1,3 +1,4 @@
+<br>
 <%= form_for(@song) do |f| %>
   <%= f.text_field(:title) %>
   <%= f.select(:artist_id, options_from_collection_for_select(Artist.all, "id", "name", @song.artist_id)) %>

@@ -1,16 +1,18 @@
 <br>
 <h1>All Artists</h1>
 
+<tbody>
 <% @artists.each do |artist| %>
-  <p>
-    <%= artist.name %>
+  <tr>
+    <td><%= artist.name %></td>
     <br>
     <% if can? :edit, Artist %>
-    <%= link_to("Edit", edit_artist_path(artist.id)) %>
+    <td><%= link_to("Edit", edit_artist_path(artist.id)) %></td>
     <% end %>
     <br>
     <% if can? :delete, Artist %>
-    <%= link_to("Delete", artist_path(artist.id), method: :delete, data: {confirm: "Are you sure?"})%>
+    <td><%= link_to("Delete", artist_path(artist.id), method: :delete, data: {confirm: "Are you sure?"})%></td>
     <% end %>
-  </p>
+  </tr>
 <% end %>
+</tbody>

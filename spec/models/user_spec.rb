@@ -5,5 +5,6 @@ RSpec.describe User, type: :model do
         it "requires the email" do
             should validate_presence_of :email
         end
+        
     end
 end

@@ -70,3 +70,5 @@ gem 'devise'
 gem 'rails_admin'
 
 gem 'cancancan'
+
+gem 'bugsnag'
